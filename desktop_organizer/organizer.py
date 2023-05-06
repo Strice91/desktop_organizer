@@ -1,3 +1,4 @@
+import os
 import subprocess
 import json
 from time import sleep
@@ -98,13 +99,14 @@ class Program:
         win32gui.MoveWindow(self.window_id, x, y, w, h, True)
 
 
-if __name__ == "__main__":
-    with open("organizer.json", encoding="utf-8") as f:
+def main():
+    folder = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    with open(folder + r"\organizer.json", encoding="utf-8") as f:
         settings = json.load(f)
 
     RETRY = settings["retry"]
     DEBUG = settings["debug"]
-    GET_LIST = settings['get_list']
+    GET_LIST = settings["get_list"]
 
     if GET_LIST:
         list_all_windows()
@@ -113,3 +115,7 @@ if __name__ == "__main__":
         p = Program(program_config)
         p.get_or_create()
         p.resize()
+
+
+if __name__ == "__main__":
+    main()

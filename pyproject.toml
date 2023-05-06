@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "desktop_organizer"
+authors = [
+    { name = "Strice91", email = "r.strice@gmail.com" },
+]
+description = "Organizes Your Desktop"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+        "pywin32",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+
+[project.gui-scripts]
+desktop_organizer = "desktop_organizer.organizer:main"
+
+[project.urls]
+repository = "https://github.com/Strice91/desktop_organizer"
+
+[tool.setuptools.packages.find]
+
+[tool.setuptools_scm]
